@@ -1,0 +1,135 @@
+@import 'src/style/animation.scss';
+$baseFontSize:100 !default;
+@function toRem($px){
+    @return ($px / $baseFontSize ) * 1rem;
+}
+$white-color:#fff;
+$fsize-biger:toRem(48);
+$fsize-big:toRem(36);
+$fsize-middle:toRem(30);
+$fsize-normal:toRem(24);
+@mixin clearfix(){
+    &:after{
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+}
+html,body,ul,img,dl,dt,dd,h1{
+    margin: 0;
+    padding: 0;
+    border: 0; 
+    outline: 0;
+    vertical-align: baseline;
+}
+html{
+    width:100%;
+    min-height:200px;
+    min-height: -webkit-calc(100vh);
+    overflow-x: hidden;
+}
+body{ 
+    font-size: toRem(24);
+    font-family: helvetica, "microsoft yahei", sans-serif, Arial, "Roboto", "droid sans fallback";
+    background: #000;
+    overflow-x: hidden;
+}
+
+ul{list-style: none;}
+a{
+    color:#acaafb;
+    &:hover{
+        color:#6e6bd6;
+    }
+}
+.container{
+    margin:auto;
+}
+.bg{
+    width:calc(100vw);
+    height:calc(100vh);
+    position: fixed;
+    left:0;
+    top:0;
+    z-index: 1;
+    background: url("http://r3.ykimg.com/051000005788496E67BC3D7CEA0BECB2") center no-repeat;
+    filter:blur(2px);
+}
+.cvs-bg{
+    position: fixed; 
+    left:0;
+    top:0;
+    z-index: 5;
+}
+.s{ 
+    width:calc(100vw);
+    min-height: calc(15vh);
+    margin-bottom:10rem;
+    padding-bottom:1rem;
+    position: relative;
+    z-index: 10;
+    @for $i from 0 to 7{
+        @if $i == 5{
+            background: transparent;
+        }@else{
+           &s#{$i}{
+                background: linear-gradient(rgba(33,33,33,0.7),rgba(50,50,50,0.9));
+            } 
+        }
+        
+    }
+    &0{padding-bottom: 0;}
+    &1{padding:1.2rem 0;}
+    &3{
+        height:300px;
+        margin-top: 2rem;
+        padding-bottom: 0;
+    }
+}
+.p-self{
+    width:calc(100vw);
+    height:calc(100vh); 
+    background: url("http://r2.ykimg.com/051000005788498D67BC3D3AD10A0D2C") center 50% no-repeat;   
+}
+#linesvg{
+    width:calc(100vw);
+    position: absolute;
+    top:50%;
+    text{
+        stroke:#fff;
+        fill:transparent;
+        stroke-width:0.02rem;
+        font-size: 0.48rem;
+        font-family: helvetica, "microsoft yahei";
+        stroke-dasharray: 200;
+        stroke-dashoffset: 100;
+    } 
+}
+.p-base{
+    >li{
+        color:#ddd;
+        font-size: $fsize-biger;
+        margin-bottom: .5rem;
+        &:nth-child(even){
+            text-align: right;
+        }
+        dl{
+            margin:0 2rem;
+        }
+        dt{
+            display: inline-block;
+            padding-bottom: .5rem;
+            border-bottom: 1px dashed #555;
+            i{
+                margin-right:10px;
+            }
+        }
+        dd{
+            display: inline-block;
+            padding-bottom: .5rem;
+            border-bottom: 1px dashed #555;
+        }
+    }
+}

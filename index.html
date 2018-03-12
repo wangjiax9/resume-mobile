@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>resume-mobile</title>
+  </head>
+  <script type="text/javascript">
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          if(clientWidth>=750){
+            docEl.style.fontSize = '100px';
+          }else if(clientWidth < 320){
+            return ;
+          }else{
+            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          }
+          document.body.style.visibility = "visible";
+        };
+    
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+  </script>
+  <body style="visibility: hidden;">
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
